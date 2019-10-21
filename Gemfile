@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-# gem 'nokogiri'
-# gem 'rack', '~> 2.0.1'
-gem 'rspec'
-gem 'minitest'
+group :test do 
+    gem 'simplecov', '~> 0.17.1', require: false
+    gem 'rspec'
+    gem 'minitest'
+end

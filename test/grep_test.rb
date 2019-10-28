@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'grep'
+require_relative '../lib/grep'
 
 # Common test data version: 1.2.0 4f2efaa
 class GrepTest < Minitest::Test

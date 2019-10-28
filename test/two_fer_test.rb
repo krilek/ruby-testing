@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'two_fer'
+require_relative '../lib/two_fer'
 
 # Common test data version: 1.2.0 4fc1acb
 class TwoFerTest < Minitest::Test

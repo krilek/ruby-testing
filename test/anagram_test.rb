@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'anagram'
+require_relative '../lib/anagram'
 
 # Common test data version: 1.4.0 baaf092
 class AnagramTest < Minitest::Test

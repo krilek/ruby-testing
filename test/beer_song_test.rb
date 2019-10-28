@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'beer_song'
+require_relative '../lib/beer_song'
 
 # Common test data version: 2.1.0 87a334d
 class BeerSongTest < Minitest::Test

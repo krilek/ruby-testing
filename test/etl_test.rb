@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'etl'
+require_relative '../lib/etl'
 
 # Common test data version: 1.0.0 ca9ed58
 class EtlTest < Minitest::Test

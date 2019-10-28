@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'robot_simulator'
+require_relative '../lib/robot_simulator'
 
 class RobotTurningTest < Minitest::Test
   attr_reader :robot

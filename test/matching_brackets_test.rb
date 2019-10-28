@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'matching_brackets'
+require_relative '../lib/matching_brackets'
 
 # Common test data version: 1.5.0 20dd164
 class MatchingBracketsTest < Minitest::Test

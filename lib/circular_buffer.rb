@@ -15,7 +15,7 @@ class CircularBuffer
   
     def write(data)
       raise BufferFullException if full?
-      @buffer.append(data)
+      @buffer << data
     end
   
     def write!(data)

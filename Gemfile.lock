@@ -41,8 +41,7 @@ GEM
     unicode-display_width (1.6.0)
 
 PLATFORMS
-  x64-mingw32
-  x86_64-linux
+  ruby
 
 DEPENDENCIES
   bundler

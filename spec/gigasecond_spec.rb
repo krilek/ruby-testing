@@ -1,4 +1,4 @@
-require 'gigasecond'
+require_relative '../lib/gigasecond.rb'
 
 RSpec.describe Gigasecond do
   describe "#Gigasecond.from" do

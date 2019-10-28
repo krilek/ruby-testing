@@ -1,15 +1,13 @@
-require_relative '../lib/bottles.rb'
+require_relative '../lib/beer_song.rb'
 
-RSpec.describe Bottles do
-  let(:bottles) { described_class.new }
-
+RSpec.describe BeerSong do
   describe '#verse' do
     it 'returns the first verse correctly' do
       expected = <<-VERSE
 99 bottles of beer on the wall, 99 bottles of beer.
 Take one down and pass it around, 98 bottles of beer on the wall.
 VERSE
-      expect(expected).to eq(bottles.verse(99))
+      expect(expected).to eq(BeerSong.recite(99, 1))
     end
 
     it 'returns another verse correctly' do
@@ -17,7 +15,7 @@ VERSE
 89 bottles of beer on the wall, 89 bottles of beer.
 Take one down and pass it around, 88 bottles of beer on the wall.
 VERSE
-      expect(expected).to eq(bottles.verse(89))
+      expect(expected).to eq(BeerSong.recite(89, 1))
     end
 
     it 'returns before the penultimate verse correctly' do
@@ -25,7 +23,7 @@ VERSE
 2 bottles of beer on the wall, 2 bottles of beer.
 Take one down and pass it around, 1 bottle of beer on the wall.
 VERSE
-      expect(expected).to eq(bottles.verse(2))
+      expect(expected).to eq(BeerSong.recite(2, 1))
     end
 
     it 'returns the penultimate verse correctly' do
@@ -33,7 +31,7 @@ VERSE
 1 bottle of beer on the wall, 1 bottle of beer.
 Take it down and pass it around, no more bottles of beer on the wall.
 VERSE
-      expect(expected).to eq(bottles.verse(1))
+      expect(expected).to eq(BeerSong.recite(1, 1))
     end
 
     it 'returns the last verse correctly' do
@@ -41,7 +39,7 @@ VERSE
 No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.
 VERSE
-      expect(expected).to eq(bottles.verse(0))
+      expect(expected).to eq(BeerSong.recite(0, 1))
     end
   end
 
@@ -54,7 +52,7 @@ Take one down and pass it around, 98 bottles of beer on the wall.
 98 bottles of beer on the wall, 98 bottles of beer.
 Take one down and pass it around, 97 bottles of beer on the wall.
 VERSES
-      expect(expected).to eq(bottles.verses(99, 98))
+      expect(expected).to eq(BeerSong.recite(99, 2))
     end
 
     it 'returns a few verses' do
@@ -68,7 +66,7 @@ Take it down and pass it around, no more bottles of beer on the wall.
 No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.
 VERSES
-      expect(expected).to eq(bottles.verses(2, 0))
+      expect(expected).to eq(BeerSong.recite(2, 3))
     end
   end
 
@@ -375,7 +373,7 @@ Take it down and pass it around, no more bottles of beer on the wall.
 No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.
 SONG
-      expect(expected).to eq(bottles.song)
+      expect(expected).to eq(BeerSong.recite(99, 100))
     end
   end
 end

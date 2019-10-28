@@ -44,7 +44,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  bundler (= 2.0.2)
+  bundler
   minitest
   rake (>= 13.0.0)
   rspec

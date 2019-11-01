@@ -1,20 +1,4 @@
 Na 4.11
-stworzyć repo z katalogami i podpietym travis ci
-lib/ -> kod w osobnych plikach
-test/ -> minitest
-spec/ -> rspec -> stworzyć na podstawie tamtych testów swoje
--- Gemfile -> Bundler env
--- travis ci file
--- readme.md
-
-Wykonac na exercism od 17-30 zadań
-easy 8
-medium 8
-hard 1
-
-https://github.com/egzamin/rspec-template
-testować na kilku wersjach ruby
-2.3.8+
 -- badges od travis ci i Code Climate
 Code coverage -> simplecov -> ładuje jako pierwszy gem (weryfikacja rspec i minitest) pokrycie lib
 dla Bundlera

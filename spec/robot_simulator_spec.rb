@@ -1,12 +1,13 @@
+# frozen_string_literal: true
 
-require_relative("../lib/robot_simulator")
+require_relative('../lib/robot_simulator')
 RSpec.describe Robot do
   attr_reader(:robot)
-  before do 
+  before do
     @robot = Robot.new
   end
   it 'Tests robot bearing' do
-    [:east, :west, :north, :south].each do |direction|
+    %i[east west north south].each do |direction|
       robot.orient(direction)
       expect(robot.bearing).to(eq(direction))
     end
@@ -92,22 +93,22 @@ RSpec.describe Simulator do
     @simulator ||= Simulator.new
   end
   it 'Tests instructions for turning left' do
-    expect(simulator.instructions("L")).to(eq([:turn_left]))
+    expect(simulator.instructions('L')).to(eq([:turn_left]))
   end
   it 'Tests instructions for turning right' do
-    expect(simulator.instructions("R")).to(eq([:turn_right]))
+    expect(simulator.instructions('R')).to(eq([:turn_right]))
   end
   it 'Tests instructions for advancing' do
-    expect(simulator.instructions("A")).to(eq([:advance]))
+    expect(simulator.instructions('A')).to(eq([:advance]))
   end
   it 'Tests series of instructions' do
-    commands = [:turn_right, :advance, :advance, :turn_left]
-    expect(simulator.instructions("RAAL")).to(eq(commands))
+    commands = %i[turn_right advance advance turn_left]
+    expect(simulator.instructions('RAAL')).to(eq(commands))
   end
   it 'Tests instruct robot' do
     robot = Robot.new
-    simulator.place(robot, :x => -2, :y => 1, :direction => :east)
-    simulator.evaluate(robot, "RLAALAL")
+    simulator.place(robot, x: -2, y: 1, direction: :east)
+    simulator.evaluate(robot, 'RLAALAL')
     expect(robot.coordinates).to(eq([0, 2]))
     expect(robot.bearing).to(eq(:west))
   end
@@ -115,12 +116,12 @@ RSpec.describe Simulator do
     robot1 = Robot.new
     robot2 = Robot.new
     robot3 = Robot.new
-    simulator.place(robot1, :x => 0, :y => 0, :direction => :north)
-    simulator.place(robot2, :x => 2, :y => -7, :direction => :east)
-    simulator.place(robot3, :x => 8, :y => 4, :direction => :south)
-    simulator.evaluate(robot1, "LAAARALA")
-    simulator.evaluate(robot2, "RRAAAAALA")
-    simulator.evaluate(robot3, "LAAARRRALLLL")
+    simulator.place(robot1, x: 0, y: 0, direction: :north)
+    simulator.place(robot2, x: 2, y: -7, direction: :east)
+    simulator.place(robot3, x: 8, y: 4, direction: :south)
+    simulator.evaluate(robot1, 'LAAARALA')
+    simulator.evaluate(robot2, 'RRAAAAALA')
+    simulator.evaluate(robot3, 'LAAARRRALLLL')
     expect(robot1.coordinates).to(eq([-4, 1]))
     expect(robot1.bearing).to(eq(:west))
     expect(robot2.coordinates).to(eq([-3, -8]))

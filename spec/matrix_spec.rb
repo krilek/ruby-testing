@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 
-require_relative("../lib/matrix")
+require_relative('../lib/matrix')
 RSpec.describe Matrix do
   it 'Tests extracting a row' do
     matrix = Matrix.new("1 2\n10 20")

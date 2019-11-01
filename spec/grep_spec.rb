@@ -142,15 +142,30 @@ RSpec.describe Grep do
     pattern = 'TO'
     flags = ['-i']
     files = ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']
-    expected = "iliad.txt:Caused to Achaia's host, sent many a soul\niliad.txt:Illustrious into Ades premature,\niliad.txt:And Heroes gave (so stood the will of Jove)\niliad.txt:To dogs and to all ravening fowls a prey,\nmidsummer-night.txt:I do entreat your grace to pardon me.\nmidsummer-night.txt:In such a presence here to plead my thoughts;\nmidsummer-night.txt:If I refuse to wed Demetrius.\nparadise-lost.txt:Brought Death into the World, and all our woe,\nparadise-lost.txt:Restore us, and regain the blissful Seat,\nparadise-lost.txt:Sing Heav'nly Muse, that on the secret top\n".rstrip
-    expect(Grep.grep(pattern, flags, files)).to(eq(expected))
+    expected = <<~eos
+      iliad.txt:Caused to Achaia's host, sent many a soul
+      iliad.txt:Illustrious into Ades premature,
+      iliad.txt:And Heroes gave (so stood the will of Jove)
+      iliad.txt:To dogs and to all ravening fowls a prey,
+      midsummer-night.txt:I do entreat your grace to pardon me.
+      midsummer-night.txt:In such a presence here to plead my thoughts;
+      midsummer-night.txt:If I refuse to wed Demetrius.
+      paradise-lost.txt:Brought Death into the World, and all our woe,
+      paradise-lost.txt:Restore us, and regain the blissful Seat,
+      paradise-lost.txt:Sing Heav'nly Muse, that on the secret top
+    eos
+    expect(Grep.grep(pattern, flags, files)).to(eq(expected.rstrip))
   end
   it 'Tests multiple files several matches inverted flag' do
     pattern = 'a'
     flags = ['-v']
     files = ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']
-    expected = "iliad.txt:Achilles sing, O Goddess! Peleus' son;\niliad.txt:The noble Chief Achilles from the son\nmidsummer-night.txt:If I refuse to wed Demetrius.\n".rstrip
-    expect(Grep.grep(pattern, flags, files)).to(eq(expected))
+    expected = <<~eos
+      iliad.txt:Achilles sing, O Goddess! Peleus' son;
+      iliad.txt:The noble Chief Achilles from the son
+      midsummer-night.txt:If I refuse to wed Demetrius.
+    eos
+    expect(Grep.grep(pattern, flags, files)).to(eq(expected.rstrip))
   end
   it 'Tests multiple files one match match entire lines flag' do
     pattern = 'But I beseech your grace that I may know'
@@ -184,7 +199,31 @@ RSpec.describe Grep do
     pattern = 'Illustrious into Ades premature,'
     flags = ['-x', '-v']
     files = ['iliad.txt', 'midsummer-night.txt', 'paradise-lost.txt']
-    expected = "iliad.txt:Achilles sing, O Goddess! Peleus' son;\niliad.txt:His wrath pernicious, who ten thousand woes\niliad.txt:Caused to Achaia's host, sent many a soul\niliad.txt:And Heroes gave (so stood the will of Jove)\niliad.txt:To dogs and to all ravening fowls a prey,\niliad.txt:When fierce dispute had separated once\niliad.txt:The noble Chief Achilles from the son\niliad.txt:Of Atreus, Agamemnon, King of men.\nmidsummer-night.txt:I do entreat your grace to pardon me.\nmidsummer-night.txt:I know not by what power I am made bold,\nmidsummer-night.txt:Nor how it may concern my modesty,\nmidsummer-night.txt:In such a presence here to plead my thoughts;\nmidsummer-night.txt:But I beseech your grace that I may know\nmidsummer-night.txt:The worst that may befall me in this case,\nmidsummer-night.txt:If I refuse to wed Demetrius.\nparadise-lost.txt:Of Mans First Disobedience, and the Fruit\nparadise-lost.txt:Of that Forbidden Tree, whose mortal tast\nparadise-lost.txt:Brought Death into the World, and all our woe,\nparadise-lost.txt:With loss of Eden, till one greater Man\nparadise-lost.txt:Restore us, and regain the blissful Seat,\nparadise-lost.txt:Sing Heav'nly Muse, that on the secret top\nparadise-lost.txt:Of Oreb, or of Sinai, didst inspire\nparadise-lost.txt:That Shepherd, who first taught the chosen Seed\n".rstrip
-    expect(Grep.grep(pattern, flags, files)).to(eq(expected))
+    expected = <<~eos
+      iliad.txt:Achilles sing, O Goddess! Peleus' son;
+      iliad.txt:His wrath pernicious, who ten thousand woes
+      iliad.txt:Caused to Achaia's host, sent many a soul
+      iliad.txt:And Heroes gave (so stood the will of Jove)
+      iliad.txt:To dogs and to all ravening fowls a prey,
+      iliad.txt:When fierce dispute had separated once
+      iliad.txt:The noble Chief Achilles from the son
+      iliad.txt:Of Atreus, Agamemnon, King of men.
+      midsummer-night.txt:I do entreat your grace to pardon me.
+      midsummer-night.txt:I know not by what power I am made bold,
+      midsummer-night.txt:Nor how it may concern my modesty,
+      midsummer-night.txt:In such a presence here to plead my thoughts;
+      midsummer-night.txt:But I beseech your grace that I may know
+      midsummer-night.txt:The worst that may befall me in this case,
+      midsummer-night.txt:If I refuse to wed Demetrius.
+      paradise-lost.txt:Of Mans First Disobedience, and the Fruit
+      paradise-lost.txt:Of that Forbidden Tree, whose mortal tast
+      paradise-lost.txt:Brought Death into the World, and all our woe,
+      paradise-lost.txt:With loss of Eden, till one greater Man
+      paradise-lost.txt:Restore us, and regain the blissful Seat,
+      paradise-lost.txt:Sing Heav'nly Muse, that on the secret top
+      paradise-lost.txt:Of Oreb, or of Sinai, didst inspire
+      paradise-lost.txt:That Shepherd, who first taught the chosen Seed
+    eos
+    expect(Grep.grep(pattern, flags, files)).to(eq(expected.rstrip))
   end
 end

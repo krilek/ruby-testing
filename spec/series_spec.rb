@@ -53,12 +53,16 @@ RSpec.describe Series do
   end
   it 'Tests simple slice that blows up' do
     series = Series.new('01234')
-    expect { series.slices(6) }.to(raise_error(ArgumentError))
+    expect do
+      series.slices(6)
+    end.to(raise_error(ArgumentError))
   end
   it 'Tests more complicated slice that blows up' do
     slice_string = '01032987583'
     series = Series.new(slice_string)
-    expect { series.slices((slice_string.length + 1)) }.to(raise_error(ArgumentError))
+    expect do
+      series.slices((slice_string.length + 1))
+    end.to(raise_error(ArgumentError))
   end
   it 'Tests sequential slices' do
     series = Series.new('1234')

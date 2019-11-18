@@ -10,7 +10,7 @@ class ResistorColorDuoTest < Minitest::Test
 
   def test_blue_and_grey
     #skip
-    assert_equal 68, ResistorColorDuo.value(["blue", "grey"])
+    assert_equal 68, ResistorColorDuo.value(["bluee", "grey"])
   end
 
   def test_yellow_and_violet

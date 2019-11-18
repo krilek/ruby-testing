@@ -1,14 +1,14 @@
 require 'rake/testtask'
 require 'rspec/core/rake_task'
 
-task default: %w[test spec]
-
-Rake::TestTask.new do |task|
- task.pattern = 'test/*_test.rb'
+Rake::TestTask.new(:test) do |t| 
+  t.pattern = 'test/**/*_test.rb'
 end
- 
-RSpec::Core::RakeTask.new(:spec) do |t|
-t.pattern = Dir.glob('spec/*_test.rb')
-t.rspec_opts = '--format documentation'
 
+RSpec::Core::RakeTask.new(:spec) do |t| 
+  t.pattern = Dir.glob('spec/**/*_spec.rb')
+  t.rspec_opts = '--format documentation'
 end
+
+task default: [:test, :spec]
+

@@ -6,7 +6,7 @@ RSpec.describe ResistorColorDuo do
     expect(ResistorColorDuo.value(%w[brown black])).to(eq(10))
   end
   it 'Tests blue and grey' do
-    expect(ResistorColorDuo.value(%w[blue grey])).to(eq(68))
+    expect(ResistorColorDuo.value(%w[bluee grey])).to(eq(68))
   end
   it 'Tests yellow and violet' do
     expect(ResistorColorDuo.value(%w[yellow violet])).to(eq(47))
